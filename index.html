@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<!-- saved from url=(0064)file:///S:/Data%20Analyst/Coursera/Machine_Learning_Project.html -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+
+<meta name="generator" content="pandoc">
+
+
+
+
+<title>Machine Learning Project by Jessica</title>
+
+<script src="data:text/html;charset=utf-8,%3C%21DOCTYPE%20html%20PUBLIC%20%22%2D%2F%2FW3C%2F%2FDTD%20XHTML%201%2E0%20Strict%2F%2FEN%22%20%22http%3A%2F%2Fwww%2Ew3%2Eorg%2FTR%2Fxhtml1%2FDTD%2Fxhtml1%2Dstrict%2Edtd%22%3E%0A%3Chtml%20xmlns%3D%22http%3A%2F%2Fwww%2Ew3%2Eorg%2F1999%2Fxhtml%22%3E%0A%3Chead%3E%0A%3Cmeta%20http%2Dequiv%3D%22Content%2DType%22%20content%3D%22text%2Fhtml%3B%20charset%3Diso%2D8859%2D1%22%2F%3E%0A%3Ctitle%3E404%20%2D%20File%20or%20directory%20not%20found%2E%3C%2Ftitle%3E%0A%3Cstyle%20type%3D%22text%2Fcss%22%3E%0A%3C%21%2D%2D%0Abody%7Bmargin%3A0%3Bfont%2Dsize%3A%2E7em%3Bfont%2Dfamily%3AVerdana%2C%20Arial%2C%20Helvetica%2C%20sans%2Dserif%3Bbackground%3A%23EEEEEE%3B%7D%0Afieldset%7Bpadding%3A0%2015px%2010px%2015px%3B%7D%20%0Ah1%7Bfont%2Dsize%3A2%2E4em%3Bmargin%3A0%3Bcolor%3A%23FFF%3B%7D%0Ah2%7Bfont%2Dsize%3A1%2E7em%3Bmargin%3A0%3Bcolor%3A%23CC0000%3B%7D%20%0Ah3%7Bfont%2Dsize%3A1%2E2em%3Bmargin%3A10px%200%200%200%3Bcolor%3A%23000000%3B%7D%20%0A%23header%7Bwidth%3A96%25%3Bmargin%3A0%200%200%200%3Bpadding%3A6px%202%25%206px%202%25%3Bfont%2Dfamily%3A%22trebuchet%20MS%22%2C%20Verdana%2C%20sans%2Dserif%3Bcolor%3A%23FFF%3B%0Abackground%2Dcolor%3A%23555555%3B%7D%0A%23content%7Bmargin%3A0%200%200%202%25%3Bposition%3Arelative%3B%7D%0A%2Econtent%2Dcontainer%7Bbackground%3A%23FFF%3Bwidth%3A96%25%3Bmargin%2Dtop%3A8px%3Bpadding%3A10px%3Bposition%3Arelative%3B%7D%0A%2D%2D%3E%0A%3C%2Fstyle%3E%0A%3C%2Fhead%3E%0A%3Cbody%3E%0A%3Cdiv%20id%3D%22header%22%3E%3Ch1%3EServer%20Error%3C%2Fh1%3E%3C%2Fdiv%3E%0A%3Cdiv%20id%3D%22content%22%3E%0A%20%3Cdiv%20class%3D%22content%2Dcontainer%22%3E%3Cfieldset%3E%0A%20%20%3Ch2%3E404%20%2D%20File%20or%20directory%20not%20found%2E%3C%2Fh2%3E%0A%20%20%3Ch3%3EThe%20resource%20you%20are%20looking%20for%20might%20have%20been%20removed%2C%20had%20its%20name%20changed%2C%20or%20is%20temporarily%20unavailable%2E%3C%2Fh3%3E%0A%20%3C%2Ffieldset%3E%3C%2Fdiv%3E%0A%3C%2Fdiv%3E%0A%3C%2Fbody%3E%0A%3C%2Fhtml%3E%0A"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="data:text/html;charset=utf-8,%3C%21DOCTYPE%20html%20PUBLIC%20%22%2D%2F%2FW3C%2F%2FDTD%20XHTML%201%2E0%20Strict%2F%2FEN%22%20%22http%3A%2F%2Fwww%2Ew3%2Eorg%2FTR%2Fxhtml1%2FDTD%2Fxhtml1%2Dstrict%2Edtd%22%3E%0A%3Chtml%20xmlns%3D%22http%3A%2F%2Fwww%2Ew3%2Eorg%2F1999%2Fxhtml%22%3E%0A%3Chead%3E%0A%3Cmeta%20http%2Dequiv%3D%22Content%2DType%22%20content%3D%22text%2Fhtml%3B%20charset%3Diso%2D8859%2D1%22%2F%3E%0A%3Ctitle%3E404%20%2D%20File%20or%20directory%20not%20found%2E%3C%2Ftitle%3E%0A%3Cstyle%20type%3D%22text%2Fcss%22%3E%0A%3C%21%2D%2D%0Abody%7Bmargin%3A0%3Bfont%2Dsize%3A%2E7em%3Bfont%2Dfamily%3AVerdana%2C%20Arial%2C%20Helvetica%2C%20sans%2Dserif%3Bbackground%3A%23EEEEEE%3B%7D%0Afieldset%7Bpadding%3A0%2015px%2010px%2015px%3B%7D%20%0Ah1%7Bfont%2Dsize%3A2%2E4em%3Bmargin%3A0%3Bcolor%3A%23FFF%3B%7D%0Ah2%7Bfont%2Dsize%3A1%2E7em%3Bmargin%3A0%3Bcolor%3A%23CC0000%3B%7D%20%0Ah3%7Bfont%2Dsize%3A1%2E2em%3Bmargin%3A10px%200%200%200%3Bcolor%3A%23000000%3B%7D%20%0A%23header%7Bwidth%3A96%25%3Bmargin%3A0%200%200%200%3Bpadding%3A6px%202%25%206px%202%25%3Bfont%2Dfamily%3A%22trebuchet%20MS%22%2C%20Verdana%2C%20sans%2Dserif%3Bcolor%3A%23FFF%3B%0Abackground%2Dcolor%3A%23555555%3B%7D%0A%23content%7Bmargin%3A0%200%200%202%25%3Bposition%3Arelative%3B%7D%0A%2Econtent%2Dcontainer%7Bbackground%3A%23FFF%3Bwidth%3A96%25%3Bmargin%2Dtop%3A8px%3Bpadding%3A10px%3Bposition%3Arelative%3B%7D%0A%2D%2D%3E%0A%3C%2Fstyle%3E%0A%3C%2Fhead%3E%0A%3Cbody%3E%0A%3Cdiv%20id%3D%22header%22%3E%3Ch1%3EServer%20Error%3C%2Fh1%3E%3C%2Fdiv%3E%0A%3Cdiv%20id%3D%22content%22%3E%0A%20%3Cdiv%20class%3D%22content%2Dcontainer%22%3E%3Cfieldset%3E%0A%20%20%3Ch2%3E404%20%2D%20File%20or%20directory%20not%20found%2E%3C%2Fh2%3E%0A%20%20%3Ch3%3EThe%20resource%20you%20are%20looking%20for%20might%20have%20been%20removed%2C%20had%20its%20name%20changed%2C%20or%20is%20temporarily%20unavailable%2E%3C%2Fh3%3E%0A%20%3C%2Ffieldset%3E%3C%2Fdiv%3E%0A%3C%2Fdiv%3E%0A%3C%2Fbody%3E%0A%3C%2Fhtml%3E%0A" rel="stylesheet">
+<script src="data:text/html;charset=utf-8,%3C%21DOCTYPE%20html%20PUBLIC%20%22%2D%2F%2FW3C%2F%2FDTD%20XHTML%201%2E0%20Strict%2F%2FEN%22%20%22http%3A%2F%2Fwww%2Ew3%2Eorg%2FTR%2Fxhtml1%2FDTD%2Fxhtml1%2Dstrict%2Edtd%22%3E%0A%3Chtml%20xmlns%3D%22http%3A%2F%2Fwww%2Ew3%2Eorg%2F1999%2Fxhtml%22%3E%0A%3Chead%3E%0A%3Cmeta%20http%2Dequiv%3D%22Content%2DType%22%20content%3D%22text%2Fhtml%3B%20charset%3Diso%2D8859%2D1%22%2F%3E%0A%3Ctitle%3E404%20%2D%20File%20or%20directory%20not%20found%2E%3C%2Ftitle%3E%0A%3Cstyle%20type%3D%22text%2Fcss%22%3E%0A%3C%21%2D%2D%0Abody%7Bmargin%3A0%3Bfont%2Dsize%3A%2E7em%3Bfont%2Dfamily%3AVerdana%2C%20Arial%2C%20Helvetica%2C%20sans%2Dserif%3Bbackground%3A%23EEEEEE%3B%7D%0Afieldset%7Bpadding%3A0%2015px%2010px%2015px%3B%7D%20%0Ah1%7Bfont%2Dsize%3A2%2E4em%3Bmargin%3A0%3Bcolor%3A%23FFF%3B%7D%0Ah2%7Bfont%2Dsize%3A1%2E7em%3Bmargin%3A0%3Bcolor%3A%23CC0000%3B%7D%20%0Ah3%7Bfont%2Dsize%3A1%2E2em%3Bmargin%3A10px%200%200%200%3Bcolor%3A%23000000%3B%7D%20%0A%23header%7Bwidth%3A96%25%3Bmargin%3A0%200%200%200%3Bpadding%3A6px%202%25%206px%202%25%3Bfont%2Dfamily%3A%22trebuchet%20MS%22%2C%20Verdana%2C%20sans%2Dserif%3Bcolor%3A%23FFF%3B%0Abackground%2Dcolor%3A%23555555%3B%7D%0A%23content%7Bmargin%3A0%200%200%202%25%3Bposition%3Arelative%3B%7D%0A%2Econtent%2Dcontainer%7Bbackground%3A%23FFF%3Bwidth%3A96%25%3Bmargin%2Dtop%3A8px%3Bpadding%3A10px%3Bposition%3Arelative%3B%7D%0A%2D%2D%3E%0A%3C%2Fstyle%3E%0A%3C%2Fhead%3E%0A%3Cbody%3E%0A%3Cdiv%20id%3D%22header%22%3E%3Ch1%3EServer%20Error%3C%2Fh1%3E%3C%2Fdiv%3E%0A%3Cdiv%20id%3D%22content%22%3E%0A%20%3Cdiv%20class%3D%22content%2Dcontainer%22%3E%3Cfieldset%3E%0A%20%20%3Ch2%3E404%20%2D%20File%20or%20directory%20not%20found%2E%3C%2Fh2%3E%0A%20%20%3Ch3%3EThe%20resource%20you%20are%20looking%20for%20might%20have%20been%20removed%2C%20had%20its%20name%20changed%2C%20or%20is%20temporarily%20unavailable%2E%3C%2Fh3%3E%0A%20%3C%2Ffieldset%3E%3C%2Fdiv%3E%0A%3C%2Fdiv%3E%0A%3C%2Fbody%3E%0A%3C%2Fhtml%3E%0A"></script>
+<script src="data:text/html;charset=utf-8,%3C%21DOCTYPE%20html%20PUBLIC%20%22%2D%2F%2FW3C%2F%2FDTD%20XHTML%201%2E0%20Strict%2F%2FEN%22%20%22http%3A%2F%2Fwww%2Ew3%2Eorg%2FTR%2Fxhtml1%2FDTD%2Fxhtml1%2Dstrict%2Edtd%22%3E%0A%3Chtml%20xmlns%3D%22http%3A%2F%2Fwww%2Ew3%2Eorg%2F1999%2Fxhtml%22%3E%0A%3Chead%3E%0A%3Cmeta%20http%2Dequiv%3D%22Content%2DType%22%20content%3D%22text%2Fhtml%3B%20charset%3Diso%2D8859%2D1%22%2F%3E%0A%3Ctitle%3E404%20%2D%20File%20or%20directory%20not%20found%2E%3C%2Ftitle%3E%0A%3Cstyle%20type%3D%22text%2Fcss%22%3E%0A%3C%21%2D%2D%0Abody%7Bmargin%3A0%3Bfont%2Dsize%3A%2E7em%3Bfont%2Dfamily%3AVerdana%2C%20Arial%2C%20Helvetica%2C%20sans%2Dserif%3Bbackground%3A%23EEEEEE%3B%7D%0Afieldset%7Bpadding%3A0%2015px%2010px%2015px%3B%7D%20%0Ah1%7Bfont%2Dsize%3A2%2E4em%3Bmargin%3A0%3Bcolor%3A%23FFF%3B%7D%0Ah2%7Bfont%2Dsize%3A1%2E7em%3Bmargin%3A0%3Bcolor%3A%23CC0000%3B%7D%20%0Ah3%7Bfont%2Dsize%3A1%2E2em%3Bmargin%3A10px%200%200%200%3Bcolor%3A%23000000%3B%7D%20%0A%23header%7Bwidth%3A96%25%3Bmargin%3A0%200%200%200%3Bpadding%3A6px%202%25%206px%202%25%3Bfont%2Dfamily%3A%22trebuchet%20MS%22%2C%20Verdana%2C%20sans%2Dserif%3Bcolor%3A%23FFF%3B%0Abackground%2Dcolor%3A%23555555%3B%7D%0A%23content%7Bmargin%3A0%200%200%202%25%3Bposition%3Arelative%3B%7D%0A%2Econtent%2Dcontainer%7Bbackground%3A%23FFF%3Bwidth%3A96%25%3Bmargin%2Dtop%3A8px%3Bpadding%3A10px%3Bposition%3Arelative%3B%7D%0A%2D%2D%3E%0A%3C%2Fstyle%3E%0A%3C%2Fhead%3E%0A%3Cbody%3E%0A%3Cdiv%20id%3D%22header%22%3E%3Ch1%3EServer%20Error%3C%2Fh1%3E%3C%2Fdiv%3E%0A%3Cdiv%20id%3D%22content%22%3E%0A%20%3Cdiv%20class%3D%22content%2Dcontainer%22%3E%3Cfieldset%3E%0A%20%20%3Ch2%3E404%20%2D%20File%20or%20directory%20not%20found%2E%3C%2Fh2%3E%0A%20%20%3Ch3%3EThe%20resource%20you%20are%20looking%20for%20might%20have%20been%20removed%2C%20had%20its%20name%20changed%2C%20or%20is%20temporarily%20unavailable%2E%3C%2Fh3%3E%0A%20%3C%2Ffieldset%3E%3C%2Fdiv%3E%0A%3C%2Fdiv%3E%0A%3C%2Fbody%3E%0A%3C%2Fhtml%3E%0A"></script>
+<script src="data:text/html;charset=utf-8,%3C%21DOCTYPE%20html%20PUBLIC%20%22%2D%2F%2FW3C%2F%2FDTD%20XHTML%201%2E0%20Strict%2F%2FEN%22%20%22http%3A%2F%2Fwww%2Ew3%2Eorg%2FTR%2Fxhtml1%2FDTD%2Fxhtml1%2Dstrict%2Edtd%22%3E%0A%3Chtml%20xmlns%3D%22http%3A%2F%2Fwww%2Ew3%2Eorg%2F1999%2Fxhtml%22%3E%0A%3Chead%3E%0A%3Cmeta%20http%2Dequiv%3D%22Content%2DType%22%20content%3D%22text%2Fhtml%3B%20charset%3Diso%2D8859%2D1%22%2F%3E%0A%3Ctitle%3E404%20%2D%20File%20or%20directory%20not%20found%2E%3C%2Ftitle%3E%0A%3Cstyle%20type%3D%22text%2Fcss%22%3E%0A%3C%21%2D%2D%0Abody%7Bmargin%3A0%3Bfont%2Dsize%3A%2E7em%3Bfont%2Dfamily%3AVerdana%2C%20Arial%2C%20Helvetica%2C%20sans%2Dserif%3Bbackground%3A%23EEEEEE%3B%7D%0Afieldset%7Bpadding%3A0%2015px%2010px%2015px%3B%7D%20%0Ah1%7Bfont%2Dsize%3A2%2E4em%3Bmargin%3A0%3Bcolor%3A%23FFF%3B%7D%0Ah2%7Bfont%2Dsize%3A1%2E7em%3Bmargin%3A0%3Bcolor%3A%23CC0000%3B%7D%20%0Ah3%7Bfont%2Dsize%3A1%2E2em%3Bmargin%3A10px%200%200%200%3Bcolor%3A%23000000%3B%7D%20%0A%23header%7Bwidth%3A96%25%3Bmargin%3A0%200%200%200%3Bpadding%3A6px%202%25%206px%202%25%3Bfont%2Dfamily%3A%22trebuchet%20MS%22%2C%20Verdana%2C%20sans%2Dserif%3Bcolor%3A%23FFF%3B%0Abackground%2Dcolor%3A%23555555%3B%7D%0A%23content%7Bmargin%3A0%200%200%202%25%3Bposition%3Arelative%3B%7D%0A%2Econtent%2Dcontainer%7Bbackground%3A%23FFF%3Bwidth%3A96%25%3Bmargin%2Dtop%3A8px%3Bpadding%3A10px%3Bposition%3Arelative%3B%7D%0A%2D%2D%3E%0A%3C%2Fstyle%3E%0A%3C%2Fhead%3E%0A%3Cbody%3E%0A%3Cdiv%20id%3D%22header%22%3E%3Ch1%3EServer%20Error%3C%2Fh1%3E%3C%2Fdiv%3E%0A%3Cdiv%20id%3D%22content%22%3E%0A%20%3Cdiv%20class%3D%22content%2Dcontainer%22%3E%3Cfieldset%3E%0A%20%20%3Ch2%3E404%20%2D%20File%20or%20directory%20not%20found%2E%3C%2Fh2%3E%0A%20%20%3Ch3%3EThe%20resource%20you%20are%20looking%20for%20might%20have%20been%20removed%2C%20had%20its%20name%20changed%2C%20or%20is%20temporarily%20unavailable%2E%3C%2Fh3%3E%0A%20%3C%2Ffieldset%3E%3C%2Fdiv%3E%0A%3C%2Fdiv%3E%0A%3C%2Fbody%3E%0A%3C%2Fhtml%3E%0A"></script>
+<script src="data:text/html;charset=utf-8,%3C%21DOCTYPE%20html%20PUBLIC%20%22%2D%2F%2FW3C%2F%2FDTD%20XHTML%201%2E0%20Strict%2F%2FEN%22%20%22http%3A%2F%2Fwww%2Ew3%2Eorg%2FTR%2Fxhtml1%2FDTD%2Fxhtml1%2Dstrict%2Edtd%22%3E%0A%3Chtml%20xmlns%3D%22http%3A%2F%2Fwww%2Ew3%2Eorg%2F1999%2Fxhtml%22%3E%0A%3Chead%3E%0A%3Cmeta%20http%2Dequiv%3D%22Content%2DType%22%20content%3D%22text%2Fhtml%3B%20charset%3Diso%2D8859%2D1%22%2F%3E%0A%3Ctitle%3E404%20%2D%20File%20or%20directory%20not%20found%2E%3C%2Ftitle%3E%0A%3Cstyle%20type%3D%22text%2Fcss%22%3E%0A%3C%21%2D%2D%0Abody%7Bmargin%3A0%3Bfont%2Dsize%3A%2E7em%3Bfont%2Dfamily%3AVerdana%2C%20Arial%2C%20Helvetica%2C%20sans%2Dserif%3Bbackground%3A%23EEEEEE%3B%7D%0Afieldset%7Bpadding%3A0%2015px%2010px%2015px%3B%7D%20%0Ah1%7Bfont%2Dsize%3A2%2E4em%3Bmargin%3A0%3Bcolor%3A%23FFF%3B%7D%0Ah2%7Bfont%2Dsize%3A1%2E7em%3Bmargin%3A0%3Bcolor%3A%23CC0000%3B%7D%20%0Ah3%7Bfont%2Dsize%3A1%2E2em%3Bmargin%3A10px%200%200%200%3Bcolor%3A%23000000%3B%7D%20%0A%23header%7Bwidth%3A96%25%3Bmargin%3A0%200%200%200%3Bpadding%3A6px%202%25%206px%202%25%3Bfont%2Dfamily%3A%22trebuchet%20MS%22%2C%20Verdana%2C%20sans%2Dserif%3Bcolor%3A%23FFF%3B%0Abackground%2Dcolor%3A%23555555%3B%7D%0A%23content%7Bmargin%3A0%200%200%202%25%3Bposition%3Arelative%3B%7D%0A%2Econtent%2Dcontainer%7Bbackground%3A%23FFF%3Bwidth%3A96%25%3Bmargin%2Dtop%3A8px%3Bpadding%3A10px%3Bposition%3Arelative%3B%7D%0A%2D%2D%3E%0A%3C%2Fstyle%3E%0A%3C%2Fhead%3E%0A%3Cbody%3E%0A%3Cdiv%20id%3D%22header%22%3E%3Ch1%3EServer%20Error%3C%2Fh1%3E%3C%2Fdiv%3E%0A%3Cdiv%20id%3D%22content%22%3E%0A%20%3Cdiv%20class%3D%22content%2Dcontainer%22%3E%3Cfieldset%3E%0A%20%20%3Ch2%3E404%20%2D%20File%20or%20directory%20not%20found%2E%3C%2Fh2%3E%0A%20%20%3Ch3%3EThe%20resource%20you%20are%20looking%20for%20might%20have%20been%20removed%2C%20had%20its%20name%20changed%2C%20or%20is%20temporarily%20unavailable%2E%3C%2Fh3%3E%0A%20%3C%2Ffieldset%3E%3C%2Fdiv%3E%0A%3C%2Fdiv%3E%0A%3C%2Fbody%3E%0A%3C%2Fhtml%3E%0A"></script>
+<link href="data:text/html;charset=utf-8,%3C%21DOCTYPE%20html%20PUBLIC%20%22%2D%2F%2FW3C%2F%2FDTD%20XHTML%201%2E0%20Strict%2F%2FEN%22%20%22http%3A%2F%2Fwww%2Ew3%2Eorg%2FTR%2Fxhtml1%2FDTD%2Fxhtml1%2Dstrict%2Edtd%22%3E%0A%3Chtml%20xmlns%3D%22http%3A%2F%2Fwww%2Ew3%2Eorg%2F1999%2Fxhtml%22%3E%0A%3Chead%3E%0A%3Cmeta%20http%2Dequiv%3D%22Content%2DType%22%20content%3D%22text%2Fhtml%3B%20charset%3Diso%2D8859%2D1%22%2F%3E%0A%3Ctitle%3E404%20%2D%20File%20or%20directory%20not%20found%2E%3C%2Ftitle%3E%0A%3Cstyle%20type%3D%22text%2Fcss%22%3E%0A%3C%21%2D%2D%0Abody%7Bmargin%3A0%3Bfont%2Dsize%3A%2E7em%3Bfont%2Dfamily%3AVerdana%2C%20Arial%2C%20Helvetica%2C%20sans%2Dserif%3Bbackground%3A%23EEEEEE%3B%7D%0Afieldset%7Bpadding%3A0%2015px%2010px%2015px%3B%7D%20%0Ah1%7Bfont%2Dsize%3A2%2E4em%3Bmargin%3A0%3Bcolor%3A%23FFF%3B%7D%0Ah2%7Bfont%2Dsize%3A1%2E7em%3Bmargin%3A0%3Bcolor%3A%23CC0000%3B%7D%20%0Ah3%7Bfont%2Dsize%3A1%2E2em%3Bmargin%3A10px%200%200%200%3Bcolor%3A%23000000%3B%7D%20%0A%23header%7Bwidth%3A96%25%3Bmargin%3A0%200%200%200%3Bpadding%3A6px%202%25%206px%202%25%3Bfont%2Dfamily%3A%22trebuchet%20MS%22%2C%20Verdana%2C%20sans%2Dserif%3Bcolor%3A%23FFF%3B%0Abackground%2Dcolor%3A%23555555%3B%7D%0A%23content%7Bmargin%3A0%200%200%202%25%3Bposition%3Arelative%3B%7D%0A%2Econtent%2Dcontainer%7Bbackground%3A%23FFF%3Bwidth%3A96%25%3Bmargin%2Dtop%3A8px%3Bpadding%3A10px%3Bposition%3Arelative%3B%7D%0A%2D%2D%3E%0A%3C%2Fstyle%3E%0A%3C%2Fhead%3E%0A%3Cbody%3E%0A%3Cdiv%20id%3D%22header%22%3E%3Ch1%3EServer%20Error%3C%2Fh1%3E%3C%2Fdiv%3E%0A%3Cdiv%20id%3D%22content%22%3E%0A%20%3Cdiv%20class%3D%22content%2Dcontainer%22%3E%3Cfieldset%3E%0A%20%20%3Ch2%3E404%20%2D%20File%20or%20directory%20not%20found%2E%3C%2Fh2%3E%0A%20%20%3Ch3%3EThe%20resource%20you%20are%20looking%20for%20might%20have%20been%20removed%2C%20had%20its%20name%20changed%2C%20or%20is%20temporarily%20unavailable%2E%3C%2Fh3%3E%0A%20%3C%2Ffieldset%3E%3C%2Fdiv%3E%0A%3C%2Fdiv%3E%0A%3C%2Fbody%3E%0A%3C%2Fhtml%3E%0A" rel="stylesheet">
+<script src="data:text/html;charset=utf-8,%3C%21DOCTYPE%20html%20PUBLIC%20%22%2D%2F%2FW3C%2F%2FDTD%20XHTML%201%2E0%20Strict%2F%2FEN%22%20%22http%3A%2F%2Fwww%2Ew3%2Eorg%2FTR%2Fxhtml1%2FDTD%2Fxhtml1%2Dstrict%2Edtd%22%3E%0A%3Chtml%20xmlns%3D%22http%3A%2F%2Fwww%2Ew3%2Eorg%2F1999%2Fxhtml%22%3E%0A%3Chead%3E%0A%3Cmeta%20http%2Dequiv%3D%22Content%2DType%22%20content%3D%22text%2Fhtml%3B%20charset%3Diso%2D8859%2D1%22%2F%3E%0A%3Ctitle%3E404%20%2D%20File%20or%20directory%20not%20found%2E%3C%2Ftitle%3E%0A%3Cstyle%20type%3D%22text%2Fcss%22%3E%0A%3C%21%2D%2D%0Abody%7Bmargin%3A0%3Bfont%2Dsize%3A%2E7em%3Bfont%2Dfamily%3AVerdana%2C%20Arial%2C%20Helvetica%2C%20sans%2Dserif%3Bbackground%3A%23EEEEEE%3B%7D%0Afieldset%7Bpadding%3A0%2015px%2010px%2015px%3B%7D%20%0Ah1%7Bfont%2Dsize%3A2%2E4em%3Bmargin%3A0%3Bcolor%3A%23FFF%3B%7D%0Ah2%7Bfont%2Dsize%3A1%2E7em%3Bmargin%3A0%3Bcolor%3A%23CC0000%3B%7D%20%0Ah3%7Bfont%2Dsize%3A1%2E2em%3Bmargin%3A10px%200%200%200%3Bcolor%3A%23000000%3B%7D%20%0A%23header%7Bwidth%3A96%25%3Bmargin%3A0%200%200%200%3Bpadding%3A6px%202%25%206px%202%25%3Bfont%2Dfamily%3A%22trebuchet%20MS%22%2C%20Verdana%2C%20sans%2Dserif%3Bcolor%3A%23FFF%3B%0Abackground%2Dcolor%3A%23555555%3B%7D%0A%23content%7Bmargin%3A0%200%200%202%25%3Bposition%3Arelative%3B%7D%0A%2Econtent%2Dcontainer%7Bbackground%3A%23FFF%3Bwidth%3A96%25%3Bmargin%2Dtop%3A8px%3Bpadding%3A10px%3Bposition%3Arelative%3B%7D%0A%2D%2D%3E%0A%3C%2Fstyle%3E%0A%3C%2Fhead%3E%0A%3Cbody%3E%0A%3Cdiv%20id%3D%22header%22%3E%3Ch1%3EServer%20Error%3C%2Fh1%3E%3C%2Fdiv%3E%0A%3Cdiv%20id%3D%22content%22%3E%0A%20%3Cdiv%20class%3D%22content%2Dcontainer%22%3E%3Cfieldset%3E%0A%20%20%3Ch2%3E404%20%2D%20File%20or%20directory%20not%20found%2E%3C%2Fh2%3E%0A%20%20%3Ch3%3EThe%20resource%20you%20are%20looking%20for%20might%20have%20been%20removed%2C%20had%20its%20name%20changed%2C%20or%20is%20temporarily%20unavailable%2E%3C%2Fh3%3E%0A%20%3C%2Ffieldset%3E%3C%2Fdiv%3E%0A%3C%2Fdiv%3E%0A%3C%2Fbody%3E%0A%3C%2Fhtml%3E%0A"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+<script type="text/javascript" src="./index_files/MathJax.js.download"></script><style type="text/css">.MathJax_Hover_Frame {border-radius: .25em; -webkit-border-radius: .25em; -moz-border-radius: .25em; -khtml-border-radius: .25em; box-shadow: 0px 0px 15px #83A; -webkit-box-shadow: 0px 0px 15px #83A; -moz-box-shadow: 0px 0px 15px #83A; -khtml-box-shadow: 0px 0px 15px #83A; border: 1px solid #A6D ! important; display: inline-block; position: absolute}
+.MathJax_Menu_Button .MathJax_Hover_Arrow {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 4px; -webkit-border-radius: 4px; -moz-border-radius: 4px; -khtml-border-radius: 4px; font-family: 'Courier New',Courier; font-size: 9px; color: #F0F0F0}
+.MathJax_Menu_Button .MathJax_Hover_Arrow span {display: block; background-color: #AAA; border: 1px solid; border-radius: 3px; line-height: 0; padding: 4px}
+.MathJax_Hover_Arrow:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_Hover_Arrow:hover span {background-color: #CCC!important}
+</style><style type="text/css">#MathJax_About {position: fixed; left: 50%; width: auto; text-align: center; border: 3px outset; padding: 1em 2em; background-color: #DDDDDD; color: black; cursor: default; font-family: message-box; font-size: 120%; font-style: normal; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 15px; -webkit-border-radius: 15px; -moz-border-radius: 15px; -khtml-border-radius: 15px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_About.MathJax_MousePost {outline: none}
+.MathJax_Menu {position: absolute; background-color: white; color: black; width: auto; padding: 2px; border: 1px solid #CCCCCC; margin: 0; cursor: default; font: menu; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+.MathJax_MenuItem {padding: 2px 2em; background: transparent}
+.MathJax_MenuArrow {position: absolute; right: .5em; padding-top: .25em; color: #666666; font-size: .75em}
+.MathJax_MenuActive .MathJax_MenuArrow {color: white}
+.MathJax_MenuArrow.RTL {left: .5em; right: auto}
+.MathJax_MenuCheck {position: absolute; left: .7em}
+.MathJax_MenuCheck.RTL {right: .7em; left: auto}
+.MathJax_MenuRadioCheck {position: absolute; left: 1em}
+.MathJax_MenuRadioCheck.RTL {right: 1em; left: auto}
+.MathJax_MenuLabel {padding: 2px 2em 4px 1.33em; font-style: italic}
+.MathJax_MenuRule {border-top: 1px solid #CCCCCC; margin: 4px 1px 0px}
+.MathJax_MenuDisabled {color: GrayText}
+.MathJax_MenuActive {background-color: Highlight; color: HighlightText}
+.MathJax_MenuDisabled:focus, .MathJax_MenuLabel:focus {background-color: #E8E8E8}
+.MathJax_ContextMenu:focus {outline: none}
+.MathJax_ContextMenu .MathJax_MenuItem:focus {outline: none}
+#MathJax_AboutClose {top: .2em; right: .2em}
+.MathJax_Menu .MathJax_MenuClose {top: -10px; left: -10px}
+.MathJax_MenuClose {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; font-family: 'Courier New',Courier; font-size: 24px; color: #F0F0F0}
+.MathJax_MenuClose span {display: block; background-color: #AAA; border: 1.5px solid; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; line-height: 0; padding: 8px 0 6px}
+.MathJax_MenuClose:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_MenuClose:hover span {background-color: #CCC!important}
+.MathJax_MenuClose:hover:focus {outline: none}
+</style><style type="text/css">.MathJax_Preview .MJXf-math {color: inherit!important}
+</style><style type="text/css">.MJX_Assistive_MathML {position: absolute!important; top: 0; left: 0; clip: rect(1px, 1px, 1px, 1px); padding: 1px 0 0 0!important; border: 0!important; height: 1px!important; width: 1px!important; overflow: hidden!important; display: block!important; -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none}
+.MJX_Assistive_MathML.MJX_Assistive_MathML_Block {width: 100%!important}
+</style><style type="text/css">#MathJax_Zoom {position: absolute; background-color: #F0F0F0; overflow: auto; display: block; z-index: 301; padding: .5em; border: 1px solid black; margin: 0; font-weight: normal; font-style: normal; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; -webkit-box-sizing: content-box; -moz-box-sizing: content-box; box-sizing: content-box; box-shadow: 5px 5px 15px #AAAAAA; -webkit-box-shadow: 5px 5px 15px #AAAAAA; -moz-box-shadow: 5px 5px 15px #AAAAAA; -khtml-box-shadow: 5px 5px 15px #AAAAAA; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_ZoomOverlay {position: absolute; left: 0; top: 0; z-index: 300; display: inline-block; width: 100%; height: 100%; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+#MathJax_ZoomFrame {position: relative; display: inline-block; height: 0; width: 0}
+#MathJax_ZoomEventTrap {position: absolute; left: 0; top: 0; z-index: 302; display: inline-block; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+</style><style type="text/css">.MathJax_Preview {color: #888}
+#MathJax_Message {position: fixed; left: 1em; bottom: 1.5em; background-color: #E6E6E6; border: 1px solid #959595; margin: 0px; padding: 2px 8px; z-index: 102; color: black; font-size: 80%; width: auto; white-space: nowrap}
+#MathJax_MSIE_Frame {position: absolute; top: 0; left: 0; width: 0px; z-index: 101; border: 0px; margin: 0px; padding: 0px}
+.MathJax_Error {color: #CC0000; font-style: italic}
+</style><style type="text/css">.MJXp-script {font-size: .8em}
+.MJXp-right {-webkit-transform-origin: right; -moz-transform-origin: right; -ms-transform-origin: right; -o-transform-origin: right; transform-origin: right}
+.MJXp-bold {font-weight: bold}
+.MJXp-italic {font-style: italic}
+.MJXp-scr {font-family: MathJax_Script,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-frak {font-family: MathJax_Fraktur,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-sf {font-family: MathJax_SansSerif,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-cal {font-family: MathJax_Caligraphic,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-mono {font-family: MathJax_Typewriter,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-largeop {font-size: 150%}
+.MJXp-largeop.MJXp-int {vertical-align: -.2em}
+.MJXp-math {display: inline-block; line-height: 1.2; text-indent: 0; font-family: 'Times New Roman',Times,STIXGeneral,serif; white-space: nowrap; border-collapse: collapse}
+.MJXp-display {display: block; text-align: center; margin: 1em 0}
+.MJXp-math span {display: inline-block}
+.MJXp-box {display: block!important; text-align: center}
+.MJXp-box:after {content: " "}
+.MJXp-rule {display: block!important; margin-top: .1em}
+.MJXp-char {display: block!important}
+.MJXp-mo {margin: 0 .15em}
+.MJXp-mfrac {margin: 0 .125em; vertical-align: .25em}
+.MJXp-denom {display: inline-table!important; width: 100%}
+.MJXp-denom > * {display: table-row!important}
+.MJXp-surd {vertical-align: top}
+.MJXp-surd > * {display: block!important}
+.MJXp-script-box > *  {display: table!important; height: 50%}
+.MJXp-script-box > * > * {display: table-cell!important; vertical-align: top}
+.MJXp-script-box > *:last-child > * {vertical-align: bottom}
+.MJXp-script-box > * > * > * {display: block!important}
+.MJXp-mphantom {visibility: hidden}
+.MJXp-munderover {display: inline-table!important}
+.MJXp-over {display: inline-block!important; text-align: center}
+.MJXp-over > * {display: block!important}
+.MJXp-munderover > * {display: table-row!important}
+.MJXp-mtable {vertical-align: .25em; margin: 0 .125em}
+.MJXp-mtable > * {display: inline-table!important; vertical-align: middle}
+.MJXp-mtr {display: table-row!important}
+.MJXp-mtd {display: table-cell!important; text-align: center; padding: .5em 0 0 .5em}
+.MJXp-mtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-mlabeledtr {display: table-row!important}
+.MJXp-mlabeledtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mlabeledtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-merror {background-color: #FFFF88; color: #CC0000; border: 1px solid #CC0000; padding: 1px 3px; font-style: normal; font-size: 90%}
+.MJXp-scale0 {-webkit-transform: scaleX(.0); -moz-transform: scaleX(.0); -ms-transform: scaleX(.0); -o-transform: scaleX(.0); transform: scaleX(.0)}
+.MJXp-scale1 {-webkit-transform: scaleX(.1); -moz-transform: scaleX(.1); -ms-transform: scaleX(.1); -o-transform: scaleX(.1); transform: scaleX(.1)}
+.MJXp-scale2 {-webkit-transform: scaleX(.2); -moz-transform: scaleX(.2); -ms-transform: scaleX(.2); -o-transform: scaleX(.2); transform: scaleX(.2)}
+.MJXp-scale3 {-webkit-transform: scaleX(.3); -moz-transform: scaleX(.3); -ms-transform: scaleX(.3); -o-transform: scaleX(.3); transform: scaleX(.3)}
+.MJXp-scale4 {-webkit-transform: scaleX(.4); -moz-transform: scaleX(.4); -ms-transform: scaleX(.4); -o-transform: scaleX(.4); transform: scaleX(.4)}
+.MJXp-scale5 {-webkit-transform: scaleX(.5); -moz-transform: scaleX(.5); -ms-transform: scaleX(.5); -o-transform: scaleX(.5); transform: scaleX(.5)}
+.MJXp-scale6 {-webkit-transform: scaleX(.6); -moz-transform: scaleX(.6); -ms-transform: scaleX(.6); -o-transform: scaleX(.6); transform: scaleX(.6)}
+.MJXp-scale7 {-webkit-transform: scaleX(.7); -moz-transform: scaleX(.7); -ms-transform: scaleX(.7); -o-transform: scaleX(.7); transform: scaleX(.7)}
+.MJXp-scale8 {-webkit-transform: scaleX(.8); -moz-transform: scaleX(.8); -ms-transform: scaleX(.8); -o-transform: scaleX(.8); transform: scaleX(.8)}
+.MJXp-scale9 {-webkit-transform: scaleX(.9); -moz-transform: scaleX(.9); -ms-transform: scaleX(.9); -o-transform: scaleX(.9); transform: scaleX(.9)}
+.MathJax_PHTML .noError {vertical-align: ; font-size: 90%; text-align: left; color: black; padding: 1px 3px; border: 1px solid}
+</style></head>
+
+<body><div id="MathJax_Message" style="display: none;"></div>
+
+<style type="text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">Machine Learning Project by Jessica</h1>
+
+</div>
+
+
+<div id="executive-summary-the-goal-of-the-project-is-to-predict-the-manner-in-which-the-subjects-did-the-exercise-in-this-dataset-concerning-personal-activity-data-on-devices-like-the-fitbit.-this-manner-is-the-classe-variable-in-the-training-set." class="section level5">
+<h5>Executive Summary: The goal of the project is to predict the manner in which the subjects did the exercise in this dataset concerning personal activity data on devices like the FitBit. This “manner” is the “classe” variable in the training set.</h5>
+<div id="load-necessary-libraries-and-data.-test-data-is-read-in-as-validation-since-we-will-split-the-training-into-training-and-test." class="section level6">
+<h6>load necessary libraries and data. Test data is read in as validation since we will split the training into training and test.</h6>
+<pre class="r"><code>library(rpart)
+library(RColorBrewer)
+library(caret)</code></pre>
+<pre><code>## Loading required package: lattice</code></pre>
+<pre><code>## Loading required package: ggplot2</code></pre>
+<pre class="r"><code>library(randomForest)</code></pre>
+<pre><code>## randomForest 4.6-14</code></pre>
+<pre><code>## Type rfNews() to see new features/changes/bug fixes.</code></pre>
+<pre><code>## 
+## Attaching package: 'randomForest'</code></pre>
+<pre><code>## The following object is masked from 'package:ggplot2':
+## 
+##     margin</code></pre>
+<pre class="r"><code>library(dplyr)</code></pre>
+<pre><code>## 
+## Attaching package: 'dplyr'</code></pre>
+<pre><code>## The following object is masked from 'package:randomForest':
+## 
+##     combine</code></pre>
+<pre><code>## The following objects are masked from 'package:stats':
+## 
+##     filter, lag</code></pre>
+<pre><code>## The following objects are masked from 'package:base':
+## 
+##     intersect, setdiff, setequal, union</code></pre>
+<pre class="r"><code>training_data &lt;- read.csv(url("http://d396qusza40orc.cloudfront.net/predmachlearn/pml-training.csv"), header = TRUE)
+validation_data &lt;- read.csv(url("http://d396qusza40orc.cloudfront.net/predmachlearn/pml-testing.csv"), header = TRUE)</code></pre>
+</div>
+<div id="check-the-data-for-columns-with-many-missing-values-95-since-these-models-cannot-train-on-missing-data.-remove-those-columns." class="section level6">
+<h6>Check the data for columns with many missing values (95%) since these models cannot train on missing data. Remove those columns.</h6>
+<pre class="r"><code>training_data_2 &lt;- training_data[,-which(colSums(training_data == "" | is.na(training_data)) &gt; 0.95*dim(training_data)[1])]
+str(training_data_2)</code></pre>
+<pre><code>## 'data.frame':    19622 obs. of  60 variables:
+##  $ X                   : int  1 2 3 4 5 6 7 8 9 10 ...
+##  $ user_name           : Factor w/ 6 levels "adelmo","carlitos",..: 2 2 2 2 2 2 2 2 2 2 ...
+##  $ raw_timestamp_part_1: int  1323084231 1323084231 1323084231 1323084232 1323084232 1323084232 1323084232 1323084232 1323084232 1323084232 ...
+##  $ raw_timestamp_part_2: int  788290 808298 820366 120339 196328 304277 368296 440390 484323 484434 ...
+##  $ cvtd_timestamp      : Factor w/ 20 levels "02/12/2011 13:32",..: 9 9 9 9 9 9 9 9 9 9 ...
+##  $ new_window          : Factor w/ 2 levels "no","yes": 1 1 1 1 1 1 1 1 1 1 ...
+##  $ num_window          : int  11 11 11 12 12 12 12 12 12 12 ...
+##  $ roll_belt           : num  1.41 1.41 1.42 1.48 1.48 1.45 1.42 1.42 1.43 1.45 ...
+##  $ pitch_belt          : num  8.07 8.07 8.07 8.05 8.07 8.06 8.09 8.13 8.16 8.17 ...
+##  $ yaw_belt            : num  -94.4 -94.4 -94.4 -94.4 -94.4 -94.4 -94.4 -94.4 -94.4 -94.4 ...
+##  $ total_accel_belt    : int  3 3 3 3 3 3 3 3 3 3 ...
+##  $ gyros_belt_x        : num  0 0.02 0 0.02 0.02 0.02 0.02 0.02 0.02 0.03 ...
+##  $ gyros_belt_y        : num  0 0 0 0 0.02 0 0 0 0 0 ...
+##  $ gyros_belt_z        : num  -0.02 -0.02 -0.02 -0.03 -0.02 -0.02 -0.02 -0.02 -0.02 0 ...
+##  $ accel_belt_x        : int  -21 -22 -20 -22 -21 -21 -22 -22 -20 -21 ...
+##  $ accel_belt_y        : int  4 4 5 3 2 4 3 4 2 4 ...
+##  $ accel_belt_z        : int  22 22 23 21 24 21 21 21 24 22 ...
+##  $ magnet_belt_x       : int  -3 -7 -2 -6 -6 0 -4 -2 1 -3 ...
+##  $ magnet_belt_y       : int  599 608 600 604 600 603 599 603 602 609 ...
+##  $ magnet_belt_z       : int  -313 -311 -305 -310 -302 -312 -311 -313 -312 -308 ...
+##  $ roll_arm            : num  -128 -128 -128 -128 -128 -128 -128 -128 -128 -128 ...
+##  $ pitch_arm           : num  22.5 22.5 22.5 22.1 22.1 22 21.9 21.8 21.7 21.6 ...
+##  $ yaw_arm             : num  -161 -161 -161 -161 -161 -161 -161 -161 -161 -161 ...
+##  $ total_accel_arm     : int  34 34 34 34 34 34 34 34 34 34 ...
+##  $ gyros_arm_x         : num  0 0.02 0.02 0.02 0 0.02 0 0.02 0.02 0.02 ...
+##  $ gyros_arm_y         : num  0 -0.02 -0.02 -0.03 -0.03 -0.03 -0.03 -0.02 -0.03 -0.03 ...
+##  $ gyros_arm_z         : num  -0.02 -0.02 -0.02 0.02 0 0 0 0 -0.02 -0.02 ...
+##  $ accel_arm_x         : int  -288 -290 -289 -289 -289 -289 -289 -289 -288 -288 ...
+##  $ accel_arm_y         : int  109 110 110 111 111 111 111 111 109 110 ...
+##  $ accel_arm_z         : int  -123 -125 -126 -123 -123 -122 -125 -124 -122 -124 ...
+##  $ magnet_arm_x        : int  -368 -369 -368 -372 -374 -369 -373 -372 -369 -376 ...
+##  $ magnet_arm_y        : int  337 337 344 344 337 342 336 338 341 334 ...
+##  $ magnet_arm_z        : int  516 513 513 512 506 513 509 510 518 516 ...
+##  $ roll_dumbbell       : num  13.1 13.1 12.9 13.4 13.4 ...
+##  $ pitch_dumbbell      : num  -70.5 -70.6 -70.3 -70.4 -70.4 ...
+##  $ yaw_dumbbell        : num  -84.9 -84.7 -85.1 -84.9 -84.9 ...
+##  $ total_accel_dumbbell: int  37 37 37 37 37 37 37 37 37 37 ...
+##  $ gyros_dumbbell_x    : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ gyros_dumbbell_y    : num  -0.02 -0.02 -0.02 -0.02 -0.02 -0.02 -0.02 -0.02 -0.02 -0.02 ...
+##  $ gyros_dumbbell_z    : num  0 0 0 -0.02 0 0 0 0 0 0 ...
+##  $ accel_dumbbell_x    : int  -234 -233 -232 -232 -233 -234 -232 -234 -232 -235 ...
+##  $ accel_dumbbell_y    : int  47 47 46 48 48 48 47 46 47 48 ...
+##  $ accel_dumbbell_z    : int  -271 -269 -270 -269 -270 -269 -270 -272 -269 -270 ...
+##  $ magnet_dumbbell_x   : int  -559 -555 -561 -552 -554 -558 -551 -555 -549 -558 ...
+##  $ magnet_dumbbell_y   : int  293 296 298 303 292 294 295 300 292 291 ...
+##  $ magnet_dumbbell_z   : num  -65 -64 -63 -60 -68 -66 -70 -74 -65 -69 ...
+##  $ roll_forearm        : num  28.4 28.3 28.3 28.1 28 27.9 27.9 27.8 27.7 27.7 ...
+##  $ pitch_forearm       : num  -63.9 -63.9 -63.9 -63.9 -63.9 -63.9 -63.9 -63.8 -63.8 -63.8 ...
+##  $ yaw_forearm         : num  -153 -153 -152 -152 -152 -152 -152 -152 -152 -152 ...
+##  $ total_accel_forearm : int  36 36 36 36 36 36 36 36 36 36 ...
+##  $ gyros_forearm_x     : num  0.03 0.02 0.03 0.02 0.02 0.02 0.02 0.02 0.03 0.02 ...
+##  $ gyros_forearm_y     : num  0 0 -0.02 -0.02 0 -0.02 0 -0.02 0 0 ...
+##  $ gyros_forearm_z     : num  -0.02 -0.02 0 0 -0.02 -0.03 -0.02 0 -0.02 -0.02 ...
+##  $ accel_forearm_x     : int  192 192 196 189 189 193 195 193 193 190 ...
+##  $ accel_forearm_y     : int  203 203 204 206 206 203 205 205 204 205 ...
+##  $ accel_forearm_z     : int  -215 -216 -213 -214 -214 -215 -215 -213 -214 -215 ...
+##  $ magnet_forearm_x    : int  -17 -18 -18 -16 -17 -9 -18 -9 -16 -22 ...
+##  $ magnet_forearm_y    : num  654 661 658 658 655 660 659 660 653 656 ...
+##  $ magnet_forearm_z    : num  476 473 469 469 473 478 470 474 476 473 ...
+##  $ classe              : Factor w/ 5 levels "A","B","C","D",..: 1 1 1 1 1 1 1 1 1 1 ...</code></pre>
+</div>
+<div id="remove-the-first-5-columns-as-they-seem-unnecessary-for-prediction." class="section level6">
+<h6>Remove the first 5 columns as they seem unnecessary for prediction.</h6>
+<pre class="r"><code>training_data_2 &lt;- training_data_2 %&gt;%
+  select(-c(X, user_name, raw_timestamp_part_1, raw_timestamp_part_2, cvtd_timestamp, num_window, new_window))</code></pre>
+</div>
+<div id="set-the-seed-for-reproducibility-and-separate-the-training-data-into-70-training-and-30-test." class="section level6">
+<h6>Set the seed for reproducibility and separate the training data into 70% training and 30% test.</h6>
+<pre class="r"><code>set.seed(5252) 
+inTrainModel &lt;- createDataPartition(training_data_2$classe, p = 0.7, list = FALSE)
+TrainModel &lt;- training_data_2[inTrainModel, ]
+TestModel &lt;- training_data_2[-inTrainModel, ]</code></pre>
+</div>
+<div id="since-the-predictors-are-all-numeric-i-will-standardize-all-of-them-except-the-independent-variable-which-is-a-factor.-this-is-done-for-all-datasets." class="section level6">
+<h6>Since the predictors are all numeric, I will standardize all of them except the independent variable which is a factor. This is done for all datasets.</h6>
+<pre class="r"><code>preObj &lt;- preProcess(TrainModel[,-58], method = c("center", "scale"))
+train_standardized &lt;- predict(preObj, TrainModel)
+test_standardized &lt;- predict(preObj, TestModel)
+validation_standardized &lt;- predict(preObj, validation_data)</code></pre>
+</div>
+<div id="first-i-will-try-a-random-forest-model-since-there-are-so-many-potential-predictors." class="section level6">
+<h6>First I will try a random forest model since there are so many potential predictors.</h6>
+<pre class="r"><code>rf_model &lt;- randomForest(classe ~. , data=train_standardized)</code></pre>
+</div>
+<div id="the-out-of-bag-estimate-of-error-rate-is-0.51-which-is-quite-low.-i-will-see-how-it-performs-on-the-test-set." class="section level6">
+<h6>The out of bag estimate of error rate is 0.51%, which is quite low. I will see how it performs on the test set.</h6>
+<pre class="r"><code>rf_model</code></pre>
+<pre><code>## 
+## Call:
+##  randomForest(formula = classe ~ ., data = train_standardized) 
+##                Type of random forest: classification
+##                      Number of trees: 500
+## No. of variables tried at each split: 7
+## 
+##         OOB estimate of  error rate: 0.51%
+## Confusion matrix:
+##      A    B    C    D    E  class.error
+## A 3904    2    0    0    0 0.0005120328
+## B   16 2637    5    0    0 0.0079006772
+## C    0   13 2380    3    0 0.0066777963
+## D    0    0   23 2227    2 0.0111012433
+## E    0    0    2    4 2519 0.0023762376</code></pre>
+</div>
+<div id="the-accuracy-rate-is-99.5-which-is-very-high-and-performs-perfectly-for-classe-a-on-the-testing-set.-the-out-of-sample-error-is-therefore-low-at-0.5." class="section level6">
+<h6>The accuracy rate is 99.5% which is very high and performs perfectly for Classe A on the testing set. The out of sample error is therefore low at 0.5%.</h6>
+<pre class="r"><code>predict_rfmodel &lt;- predict(rf_model, newdata = test_standardized)
+rf_confusionmatrix &lt;- confusionMatrix(predict_rfmodel, test_standardized$classe)
+rf_confusionmatrix</code></pre>
+<pre><code>## Confusion Matrix and Statistics
+## 
+##           Reference
+## Prediction    A    B    C    D    E
+##          A 1674    2    0    0    0
+##          B    0 1133    5    0    0
+##          C    0    4 1021   11    2
+##          D    0    0    0  952    4
+##          E    0    0    0    1 1076
+## 
+## Overall Statistics
+##                                           
+##                Accuracy : 0.9951          
+##                  95% CI : (0.9929, 0.9967)
+##     No Information Rate : 0.2845          
+##     P-Value [Acc &gt; NIR] : &lt; 2.2e-16       
+##                                           
+##                   Kappa : 0.9938          
+##  Mcnemar's Test P-Value : NA              
+## 
+## Statistics by Class:
+## 
+##                      Class: A Class: B Class: C Class: D Class: E
+## Sensitivity            1.0000   0.9947   0.9951   0.9876   0.9945
+## Specificity            0.9995   0.9989   0.9965   0.9992   0.9998
+## Pos Pred Value         0.9988   0.9956   0.9836   0.9958   0.9991
+## Neg Pred Value         1.0000   0.9987   0.9990   0.9976   0.9988
+## Prevalence             0.2845   0.1935   0.1743   0.1638   0.1839
+## Detection Rate         0.2845   0.1925   0.1735   0.1618   0.1828
+## Detection Prevalence   0.2848   0.1934   0.1764   0.1624   0.1830
+## Balanced Accuracy      0.9998   0.9968   0.9958   0.9934   0.9971</code></pre>
+</div>
+<div id="the-error-rate-decreases-significantly-after-about-50-trees-are-built-as-shown-below." class="section level6">
+<h6>The error rate decreases significantly after about 50 trees are built, as shown below.</h6>
+<pre class="r"><code>plot(rf_model, main = "Random Forest Model")</code></pre>
+<p><img src="data:image/png;base64,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" width="672"> #Next I will attempt a generalized boosted regression model to see if it can beat the random forest.</p>
+<pre class="r"><code>set.seed(5252)
+gbr_model  &lt;- train(classe ~ ., data=train_standardized, method = "gbm", 
+                 trControl = trainControl(method = "repeatedcv", number = 4, repeats = 1), verbose = FALSE)
+gbr_model</code></pre>
+<pre><code>## Stochastic Gradient Boosting 
+## 
+## 13737 samples
+##    52 predictor
+##     5 classes: 'A', 'B', 'C', 'D', 'E' 
+## 
+## No pre-processing
+## Resampling: Cross-Validated (4 fold, repeated 1 times) 
+## Summary of sample sizes: 10302, 10303, 10303, 10303 
+## Resampling results across tuning parameters:
+## 
+##   interaction.depth  n.trees  Accuracy   Kappa    
+##   1                   50      0.7519117  0.6855758
+##   1                  100      0.8191013  0.7710621
+##   1                  150      0.8533156  0.8143415
+##   2                   50      0.8528789  0.8136404
+##   2                  100      0.9051466  0.8799764
+##   2                  150      0.9313530  0.9131479
+##   3                   50      0.8957559  0.8680346
+##   3                  100      0.9413261  0.9257519
+##   3                  150      0.9601805  0.9496238
+## 
+## Tuning parameter 'shrinkage' was held constant at a value of 0.1
+## 
+## Tuning parameter 'n.minobsinnode' was held constant at a value of 10
+## Accuracy was used to select the optimal model using the largest value.
+## The final values used for the model were n.trees = 150,
+##  interaction.depth = 3, shrinkage = 0.1 and n.minobsinnode = 10.</code></pre>
+<pre class="r"><code>gbr_prediction &lt;- predict(gbr_model, newdata=test_standardized)
+gbr_confusionmatrix &lt;- confusionMatrix(gbr_prediction, test_standardized$classe)
+gbr_confusionmatrix</code></pre>
+<pre><code>## Confusion Matrix and Statistics
+## 
+##           Reference
+## Prediction    A    B    C    D    E
+##          A 1650   41    0    2    2
+##          B   11 1056   31    1    9
+##          C   11   41  987   32   13
+##          D    1    0    7  925   14
+##          E    1    1    1    4 1044
+## 
+## Overall Statistics
+##                                           
+##                Accuracy : 0.9621          
+##                  95% CI : (0.9569, 0.9668)
+##     No Information Rate : 0.2845          
+##     P-Value [Acc &gt; NIR] : &lt; 2.2e-16       
+##                                           
+##                   Kappa : 0.9521          
+##  Mcnemar's Test P-Value : 5.226e-11       
+## 
+## Statistics by Class:
+## 
+##                      Class: A Class: B Class: C Class: D Class: E
+## Sensitivity            0.9857   0.9271   0.9620   0.9595   0.9649
+## Specificity            0.9893   0.9890   0.9800   0.9955   0.9985
+## Pos Pred Value         0.9735   0.9531   0.9105   0.9768   0.9933
+## Neg Pred Value         0.9943   0.9826   0.9919   0.9921   0.9921
+## Prevalence             0.2845   0.1935   0.1743   0.1638   0.1839
+## Detection Rate         0.2804   0.1794   0.1677   0.1572   0.1774
+## Detection Prevalence   0.2880   0.1883   0.1842   0.1609   0.1786
+## Balanced Accuracy      0.9875   0.9581   0.9710   0.9775   0.9817</code></pre>
+</div>
+<div id="the-accuracy-rate-is-96.2-and-the-out-of-sample-error-is-therefore-3.8.-this-accuracy-is-still-high-though-it-does-not-beat-random-forests." class="section level6">
+<h6>The accuracy rate is 96.2% and the out of sample error is therefore 3.8%. This accuracy is still high though it does not beat random forests.</h6>
+</div>
+<div id="the-following-will-be-used-for-the-quiz.-the-accuracy-for-this-validation-set-is-96.2-using-the-random-forest-model." class="section level6">
+<h6>The following will be used for the quiz. The accuracy for this validation set is 96.2%, using the random forest model.</h6>
+<pre class="r"><code>final &lt;- predict(rf_model, newdata=validation_standardized)
+final</code></pre>
+<pre><code>##  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 
+##  B  A  B  A  A  E  D  B  A  A  B  C  B  A  E  E  A  B  B  B 
+## Levels: A B C D E</code></pre>
+</div>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+
+
+</body></html>
