@@ -1,0 +1,81 @@
+---
+title: "Machine Learning Project by Jessica"
+output: 
+html_document:
+keep_md: true
+---
+#####Executive Summary: The goal of the project is to predict the manner in which the subjects did the exercise in this dataset concerning personal activity data on devices like the FitBit. This "manner" is the "classe" variable in the training set.
+
+######load necessary libraries and data. Test data is read in as validation since we will split the training into training and test.
+```{r, warning=F}
+library(rpart)
+library(RColorBrewer)
+library(caret)
+library(randomForest)
+library(dplyr)
+training_data <- read.csv(url("http://d396qusza40orc.cloudfront.net/predmachlearn/pml-training.csv"), header = TRUE)
+validation_data <- read.csv(url("http://d396qusza40orc.cloudfront.net/predmachlearn/pml-testing.csv"), header = TRUE)
+```
+######Check the data for columns with many missing values (95%) since these models cannot train on missing data. Remove those columns.
+```{r, warning=F}
+training_data_2 <- training_data[,-which(colSums(training_data == "" | is.na(training_data)) > 0.95*dim(training_data)[1])]
+str(training_data_2)
+```
+######Remove the first 5 columns as they seem unnecessary for prediction.
+```{r, warning=F}
+training_data_2 <- training_data_2 %>%
+  select(-c(X, user_name, raw_timestamp_part_1, raw_timestamp_part_2, cvtd_timestamp, num_window, new_window))
+```
+######Set the seed for reproducibility and separate the training data into 70% training and 30% test.
+```{r, warning=F}
+set.seed(5252) 
+inTrainModel <- createDataPartition(training_data_2$classe, p = 0.7, list = FALSE)
+TrainModel <- training_data_2[inTrainModel, ]
+TestModel <- training_data_2[-inTrainModel, ]
+```
+######Since the predictors are all numeric, I will standardize all of them except the independent variable which is a factor. This is done for all datasets.
+```{r, warning=F}
+preObj <- preProcess(TrainModel[,-58], method = c("center", "scale"))
+train_standardized <- predict(preObj, TrainModel)
+test_standardized <- predict(preObj, TestModel)
+validation_standardized <- predict(preObj, validation_data)
+```
+###### First I will try a random forest model since there are so many potential predictors.
+```{r, warning=F}
+rf_model <- randomForest(classe ~. , data=train_standardized)
+```
+######The out of bag estimate of error rate is 0.51%, which is quite low. I will see how it performs on the test set.
+```{r, warning=F}
+rf_model
+```
+######The accuracy rate is 99.5% which is very high and performs perfectly for Classe A on the testing set. The out of sample error is therefore low at 0.5%.
+```{r, warning=F}
+predict_rfmodel <- predict(rf_model, newdata = test_standardized)
+rf_confusionmatrix <- confusionMatrix(predict_rfmodel, test_standardized$classe)
+rf_confusionmatrix
+```
+######The error rate decreases significantly after about 50 trees are built, as shown below.
+```{r, warning=F}
+plot(rf_model, main = "Random Forest Model")
+```
+#Next I will attempt a generalized boosted regression model to see if it can beat the random forest.
+```{r, warning=F}
+set.seed(5252)
+gbr_model  <- train(classe ~ ., data=train_standardized, method = "gbm", 
+                 trControl = trainControl(method = "repeatedcv", number = 4, repeats = 1), verbose = FALSE)
+gbr_model
+gbr_prediction <- predict(gbr_model, newdata=test_standardized)
+gbr_confusionmatrix <- confusionMatrix(gbr_prediction, test_standardized$classe)
+gbr_confusionmatrix
+```
+######The accuracy rate is 96.2% and the out of sample error is therefore 3.8%. This accuracy is still high though it does not beat random forests.   
+
+######The following will be used for the quiz. The accuracy for this validation set is 96.2%, using the random forest model. 
+```{r, warning=F}
+final <- predict(rf_model, newdata=validation_standardized)
+final
+```
+
+
+
+
